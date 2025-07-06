@@ -4,3 +4,5 @@ llm_rag_tutorial/data
 */.ipynb_checkpoints/*
 *.pyc
 *.env
+.env.*
+ignore.py

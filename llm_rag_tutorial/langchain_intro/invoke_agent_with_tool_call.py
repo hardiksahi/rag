@@ -7,8 +7,10 @@ sys.path.append(extra_path)
 from langchain_intro.chatbot import hospital_agent_executor
 
 if __name__ == "__main__":
+    ## Level of autonomy: Router
     hospital_agent_executor.invoke(
         {
-            "input": "What kind of reviews have patients made for communication with staff?"
+            # "input": "What kind of reviews have patients made for communication with staff?"
+            "input": "What is the wait time for hospital ABC?"
         }
     )

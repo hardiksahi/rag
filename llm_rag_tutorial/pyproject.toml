@@ -1,0 +1,25 @@
+[project]
+name = "llm-rag-tutorial"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "black>=25.1.0",
+    "chromadb>=1.0.13",
+    "langchain>=0.3.26",
+    "langchain-chroma>=0.2.4",
+    "langchain-community>=0.3.26",
+    "langchain-huggingface>=0.3.0",
+    "langchain-ollama>=0.3.3",
+    "langchain-openai>=0.3.25",
+    "langchainhub>=0.1.21",
+    "onnxruntime==1.19.2",
+    "openai>=1.91.0",
+    "protobuf==3.20",
+    "python-dotenv>=1.1.1",
+    "sentence-transformers>=4.1.0",
+]
+
+[tool.uv.workspace]
+members = ["hospital_neo4j_etl", "chatbot_api", "chatbot_frontend"]

@@ -1,0 +1,59 @@
+version: '3'
+
+services:
+  # ollama_agent:
+  #   image: ollama/ollama:0.1.27
+  #   container_name: ollama_agent
+  #   platform: linux/arm64 # Ensure correct architecture on Apple Silicon
+  #   ports:
+  #     - "11434:11434"
+  #   # volumes:
+  #   #   - $HOME/.ollama/via_docker:/root/.ollama
+
+  # ollama_cypher:
+  #   image: ollama/ollama:0.1.27
+  #   container_name: ollama_cypher
+  #   platform: linux/arm64
+  #   ports:
+  #     - "11435:11434"
+  #   # volumes:
+  #   #   - $HOME/.ollama/via_docker:/root/.ollama
+
+  # ollama_qa:
+  #   image: ollama/ollama:0.1.27
+  #   container_name: ollama_qa
+  #   platform: linux/arm64
+  #   ports:
+  #     - "11436:11434"
+  #   # volumes:
+  #   #   - $HOME/.ollama/via_docker:/root/.ollama
+
+  hospital_neo4j_etl:
+    build:
+      context: ./hospital_neo4j_etl ## THis is folder containing required files
+    env_file:
+      - .env
+  # chatbot_api:
+  #   build:
+  #     context: ./chatbot_api
+  #   env_file:
+  #     - .env
+  #   depends_on:
+  #     - hospital_neo4j_etl
+  #     - ollama_agent
+  #     - ollama_cypher
+  #     - ollama_qa
+  #   ports:
+  #     - "8000:8000"
+
+  # chatbot_frontend:
+  #   build:
+  #     context: ./chatbot_frontend
+  #   env_file:
+  #     - .env
+  #   depends_on:
+  #     - chatbot_api
+  #   ports:
+  #     - "8501:8501"
+
+

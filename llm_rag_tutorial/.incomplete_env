@@ -1,0 +1,42 @@
+NEO4J_URI=<YOUR_NEO4J_URI>
+NEO4J_USERNAME=<YOUR_NEO4J_URI>
+NEO4J_PASSWORD=<YOUR_NEO4J_PASSWORD>
+
+HOSPITALS_CSV_PATH=https://raw.githubusercontent.com/hfhoffman1144/langchain_neo4j_rag_app/main/data/hospitals.csv
+PAYERS_CSV_PATH=https://raw.githubusercontent.com/hfhoffman1144/langchain_neo4j_rag_app/main/data/payers.csv
+PHYSICIANS_CSV_PATH=https://raw.githubusercontent.com/hfhoffman1144/langchain_neo4j_rag_app/main/data/physicians.csv
+PATIENTS_CSV_PATH=https://raw.githubusercontent.com/hfhoffman1144/langchain_neo4j_rag_app/main/data/patients.csv
+VISITS_CSV_PATH=https://raw.githubusercontent.com/hfhoffman1144/langchain_neo4j_rag_app/main/data/visits.csv
+REVIEWS_CSV_PATH=https://raw.githubusercontent.com/hfhoffman1144/langchain_neo4j_rag_app/main/data/reviews.csv
+
+HOSPITAL_AGENT_MODEL=llama3-groq-tool-use:8b ## Decides the route to go along
+
+### Should be relevant to text 2 cypher generation [FINETUNED ON CYPHER DATASET]
+## 1. tomasonjo/text2cypher-demo-16bit (https://ollama.com/tomasonjo/llama3-text2cypher-demo/tags)
+## 2. neo4j/text2cypher-gemma-2-9b-it-finetuned-2024v1 ()
+## 3. neo4j/text-to-cypher-Gemma-3-4B-Instruct-2025.04.0 (https://ollama.com/ed-neo4j/t2c-gemma3-4b-it-q8_0/ https://ollama.com/ed-neo4j/t2c-gemma3-4b-it-f16)
+#ed-neo4j/t2c-gemma3-4b-it-q8_0:latest (4GB)
+#tomasonjo/llama3-text2cypher-demo:8b_4bit#
+HOSPITAL_CYPHER_MODEL=tomasonjo/llama3-text2cypher-demo:8b_4bit
+#ed-neo4j/t2c-gemma3-4b-it-f16:latest #llama3-groq-tool-use:8b ## Not finetuned for generating cypher queroes from natural language
+
+HOSPITAL_QA_MODEL=smollm2:1.7b
+#llama3.2:3b ## Generates QA from retreived context (smollm2:1.7b)
+
+## Run Ollama + FastAPI on local (WORKS)
+BASE_OLLAMA_AGENT_URL=http://localhost:11434
+BASE_OLLAMA_CYPHER_URL=http://localhost:11434
+BASE_OLLAMA_QA_URL=http://localhost:11434
+
+## Run Ollama on Docker + FastAPI on local (DOES NOT WORK TILL NOW)
+# BASE_OLLAMA_AGENT_URL=http://localhost:11434
+# BASE_OLLAMA_CYPHER_URL=http://localhost:11435
+# BASE_OLLAMA_QA_URL=http://localhost:11436
+
+## Run Ollama + FastAPI on Docker (DOES NOT WORK TILL NOW)
+# BASE_OLLAMA_AGENT_URL=http://ollama_agent:11434
+# BASE_OLLAMA_CYPHER_URL=http://ollama_cypher:11435
+# BASE_OLLAMA_QA_URL=http://ollama_qa:11436
+
+CHATBOT_URL=http://localhost:8000/async-hospital-rag-agent
+#http://host.docker.internal:8000/hospital-rag-agent

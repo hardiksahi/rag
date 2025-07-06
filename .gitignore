@@ -1,0 +1,8 @@
+llm_rag_tutorial/chroma_data
+llm_rag_tutorial/data
+*.DS_store
+*/.ipynb_checkpoints/*
+*.pyc
+*.env
+.env.*
+ignore.py

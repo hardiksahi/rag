@@ -24,6 +24,7 @@ from tools.wait_times import (
 
 dotenv.load_dotenv()
 
+
 HOSPITAL_AGENT_MODEL = os.getenv("HOSPITAL_AGENT_MODEL")
 BASE_OLLAMA_AGENT_URL = os.getenv("BASE_OLLAMA_AGENT_URL")
 
